@@ -131,13 +131,23 @@ export async function POST(request: Request) {
   if (!query) return NextResponse.json({ query, results: [] });
 
   const settled = await Promise.allSettled([
-    searchOpenverse(query),
     searchUnsplash(query),
     searchPixabay(query),
+    searchOpenverse(query),
     searchGoogle(query)
   ]);
 
-  const results = settled.flatMap((outcome) => (outcome.status === 'fulfilled' ? outcome.value : []));
+  const providerPriority: Record<string, number> = {
+    unsplash: 1,
+    pixabay: 2,
+    openverse: 3,
+    google: 4
+  };
+
+  const results = settled
+    .flatMap((outcome) => (outcome.status === 'fulfilled' ? outcome.value : []))
+    .sort((a, b) => (providerPriority[a.provider] || 99) - (providerPriority[b.provider] || 99));
+
   const allFailed = settled.every((outcome) => outcome.status === 'rejected');
 
   if (allFailed) {

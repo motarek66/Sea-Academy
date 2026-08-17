@@ -9,7 +9,10 @@ export async function POST(request: Request) {
     body: JSON.stringify({ word: body.word, sense: body.sense })
   });
   const data = await search.json();
-  const selected = data.results?.find((x: any) => x.width >= 600 && x.height >= 400) || data.results?.[0];
+  const unsplashCandidate = data.results?.find((x: any) => x.provider === 'unsplash' && x.width >= 400);
+  const unsplashAny = data.results?.find((x: any) => x.provider === 'unsplash');
+  const otherHighRes = data.results?.find((x: any) => x.width >= 600 && x.height >= 400);
+  const selected = unsplashCandidate || unsplashAny || otherHighRes || data.results?.[0];
   return NextResponse.json({
     status: selected ? 'ready' : 'missing_image',
     confidence: selected ? 0.78 : 0,
