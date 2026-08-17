@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   title: 'SEA ACADEMY',
   description: 'SEA ACADEMY - Vocabulary Poster Studio',
   icons: {
-    icon: '/poster-assets/brand-logo.png',
-    apple: '/poster-assets/brand-logo.png',
+    icon: '/poster-assets/brand-logo.svg',
+    apple: '/poster-assets/brand-logo.svg',
   },
 };
 

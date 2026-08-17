@@ -162,7 +162,7 @@ export default function Studio() {
       <header className="topbar">
         <div className="top-left">
           <div className="brandmark">
-            <img src="/poster-assets/brand-logo.png" alt="SEA ACADEMY" className="brand-logo-img" />
+            <img src="/poster-assets/brand-logo.svg" alt="SEA ACADEMY" className="brand-logo-img" />
           </div>
           <input className="project-name" value={project.name} onChange={(e) => updateProject({ name: e.target.value })} />
           <span className="save-state"><Check size={14} /> {saved ? (rtl ? 'محفوظ محليًا' : 'Saved locally') : (rtl ? 'جارٍ الحفظ…' : 'Saving…')}</span>
@@ -314,7 +314,7 @@ function PosterPage({ project, page, pageIndex, selectedId, onSelect, onImageCli
       <div className="title-top">{project.template.titleTop}</div>
       <div className="title-main">{project.template.titleMain}</div>
       <div className="category" data-long={project.template.category.length > 15 ? '' : undefined}>{project.template.category.toUpperCase()}</div>
-      <img className="poster-logo" src="/poster-assets/brand-logo.png" alt="SEA ACADEMY"/>
+      <img className="poster-logo" src="/poster-assets/brand-logo.svg" alt="SEA ACADEMY"/>
     </header>
     <div className="poster-grid">{Array.from({ length: 21 }).map((_, idx) => {
       const item = page[idx]; const global = pageIndex * 21 + idx + 1;
