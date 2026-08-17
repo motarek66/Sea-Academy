@@ -250,7 +250,7 @@ export default function Studio() {
       {imagePicker && <Modal wide onClose={() => setImagePicker(null)}>
         <div className="modal-head"><div><span className="eyebrow">Image picker</span><h2>{imagePicker.word}</h2></div><button className="icon-btn" onClick={() => setImagePicker(null)}><X size={18}/></button></div>
         <div className="searchbar"><Search size={17}/><input defaultValue={[imagePicker.word, imagePicker.searchHint].filter(Boolean).join(' ')} /><button className="secondary-btn" onClick={() => openPicker(imagePicker)}>Search</button></div>
-        <div className="picker-tools"><span>Openverse · licensed sources</span><label className="upload-btn"><Upload size={15}/> Upload image<input type="file" accept="image/*" onChange={(e) => handleUpload(e.target.files?.[0])}/></label></div>
+        <div className="picker-tools"><span>Openverse · Unsplash · Pixabay</span><label className="upload-btn"><Upload size={15}/> Upload image<input type="file" accept="image/*" onChange={(e) => handleUpload(e.target.files?.[0])}/></label></div>
         {pickerLoading ? <div className="result-grid">{Array.from({length: 12}).map((_, i) => <div className="result-skeleton" key={i}/>)}</div> : pickerResults.length ? <div className="result-grid">{pickerResults.map((img) => <button key={img.id} className="result-card" onDoubleClick={() => selectImage(img)} onClick={() => selectImage(img)}><img src={img.previewUrl} alt=""/><div><strong>{img.width || '?'} × {img.height || '?'}</strong><span>{img.provider}</span></div></button>)}</div> : <div className="empty-results"><ImageIcon size={38}/><strong>No strong image found</strong><span>Try a clearer meaning or upload your own image.</span></div>}
       </Modal>}
 
