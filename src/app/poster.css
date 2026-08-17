@@ -1,0 +1,27 @@
+/* Canonical Figma poster layers. The card/grid rules remain in globals.css. */
+.poster-background,.poster-corner{position:absolute;display:block;pointer-events:none;user-select:none}
+.poster-background{inset:0;width:900px;height:1450px;z-index:0}
+.poster-corner{left:0;top:0;width:300px;height:235px;z-index:1}
+.poster-header{position:absolute;inset:0;height:auto;padding:0;z-index:2;pointer-events:none;direction:ltr}
+.poster-header .level{position:absolute;left:92px;top:103px;width:110px;height:53px;margin:0;color:var(--accent);font-size:44px;font-weight:700;letter-spacing:0;line-height:normal;text-align:center}
+.title-top{position:absolute;left:300px;top:105px;width:320px;height:51px;color:#000;font-size:42px;font-weight:400;line-height:normal;text-align:center}
+.title-main{position:absolute;left:248px;top:150px;width:430px;height:70px;color:var(--accent);font-size:58px;font-weight:700;line-height:normal;text-align:center}
+.poster-header .category{position:absolute;left:328px;top:226px;width:245px;height:48px;margin:0;border-radius:12px;background:var(--accent);box-shadow:0 4px 10px rgba(0,0,0,.14);color:#fff;font-size:22px;font-weight:700;line-height:48px;text-align:center;white-space:nowrap}
+.poster-header .category[data-long]{left:300px;width:300px;font-size:18px}
+.poster-logo{position:absolute;left:734px;top:103px;width:98px;height:94px;object-fit:contain}
+.poster-grid{z-index:2}
+.poster-footer{position:absolute;left:45px;right:auto;top:1384px;bottom:auto;width:800px;height:22px;display:grid;grid-template-columns:99px 585px 30px;column-gap:41px;align-items:start;color:var(--accent);z-index:2;direction:ltr}
+.footer-website{padding-top:2px;font-size:12px;font-weight:600;line-height:15px;color:var(--accent);white-space:nowrap}
+.poster-footer .footer-line{display:block;width:585px;height:2px;margin-top:10px;background:transparent}
+.poster-footer strong{font-size:20px;font-weight:500;line-height:22px;color:var(--accent);text-align:center}
+.export-stage{position:fixed;left:-20000px;top:0;width:900px;pointer-events:none;z-index:-1}
+.export-stage .poster-page{box-shadow:none;border-radius:0;margin:0}
+.export-options{display:flex;flex-direction:column;gap:14px}
+.export-options fieldset{margin:0;padding:0;border:0}
+.export-options legend{margin-bottom:7px;font-size:12px;font-weight:750;color:var(--ink)}
+.choice-row{display:flex;flex-wrap:wrap;gap:8px}
+.choice{min-height:40px;padding:0 12px;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;gap:7px;font-size:12px;font-weight:700;cursor:pointer;background:#fff}
+.choice.active{border-color:#8bcdb2;background:var(--tint);color:var(--green-dark)}
+.choice input{accent-color:var(--green)}
+.choice small{color:var(--muted);font-size:10px;font-weight:500}
+.primary-btn:disabled,.secondary-btn:disabled{opacity:.6;cursor:not-allowed}

@@ -1,0 +1,19 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="300" height="235" viewBox="0 0 300 235" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Header graphic / Curved corner" clip-path="url(#clip0_0_4)">
+<path id="Vector" d="M0 0H292C215 12 146 45 92 96C44 140 18 185 0 235V0Z" fill="#12704F"/>
+<path id="Vector_2" d="M0 0H300C221 9 149 42 94 93" stroke="#18A674" stroke-width="8"/>
+<g id="Group" opacity="0.95">
+<path id="Vector_3" d="M22 38C23.6569 38 25 36.6569 25 35C25 33.3431 23.6569 32 22 32C20.3431 32 19 33.3431 19 35C19 36.6569 20.3431 38 22 38Z" fill="white"/>
+<path id="Vector_4" d="M52 38C53.6569 38 55 36.6569 55 35C55 33.3431 53.6569 32 52 32C50.3431 32 49 33.3431 49 35C49 36.6569 50.3431 38 52 38Z" fill="white"/>
+<path id="Vector_5" d="M22 68C23.6569 68 25 66.6569 25 65C25 63.3431 23.6569 62 22 62C20.3431 62 19 63.3431 19 65C19 66.6569 20.3431 68 22 68Z" fill="white"/>
+<path id="Vector_6" d="M52 68C53.6569 68 55 66.6569 55 65C55 63.3431 53.6569 62 52 62C50.3431 62 49 63.3431 49 65C49 66.6569 50.3431 68 52 68Z" fill="white"/>
+<path id="Vector_7" d="M82 68C83.6569 68 85 66.6569 85 65C85 63.3431 83.6569 62 82 62C80.3431 62 79 63.3431 79 65C79 66.6569 80.3431 68 82 68Z" fill="white"/>
+<path id="Vector_8" d="M22 98C23.6569 98 25 96.6569 25 95C25 93.3431 23.6569 92 22 92C20.3431 92 19 93.3431 19 95C19 96.6569 20.3431 98 22 98Z" fill="white"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_0_4">
+<rect width="300" height="235" fill="white"/>
+</clipPath>
+</defs>
+</svg>
