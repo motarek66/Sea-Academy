@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 type ImageResult = {
   id: string;
-  provider: 'openverse' | 'unsplash' | 'pixabay';
+  provider: 'openverse' | 'unsplash' | 'pixabay' | 'google';
   previewUrl: string;
   fullUrl: string;
   width: number;
@@ -93,6 +93,36 @@ async function searchPixabay(query: string): Promise<ImageResult[]> {
     .filter((item: ImageResult) => item.previewUrl);
 }
 
+async function searchGoogle(query: string): Promise<ImageResult[]> {
+  const apiKey = process.env.GOOGLE_API_KEY;
+  const cx = process.env.GOOGLE_CX;
+  if (!apiKey || !cx) return [];
+  const url = new URL('https://www.googleapis.com/customsearch/v1');
+  url.searchParams.set('key', apiKey);
+  url.searchParams.set('cx', cx);
+  url.searchParams.set('q', query);
+  url.searchParams.set('searchType', 'image');
+  url.searchParams.set('safe', 'active');
+  url.searchParams.set('num', '10');
+  const response = await fetch(url, { next: { revalidate: 3600 } });
+  if (!response.ok) throw new Error(`Google ${response.status}`);
+  const data = await response.json();
+  return (data.items || [])
+    .map((item: any) => ({
+      id: `google-${item.link}`,
+      provider: 'google' as const,
+      previewUrl: item.image?.thumbnailLink || item.link,
+      fullUrl: item.link,
+      width: Number(item.image?.width || 0),
+      height: Number(item.image?.height || 0),
+      author: undefined,
+      sourcePageUrl: item.image?.contextLink || undefined,
+      licenseName: undefined,
+      title: item.title || undefined
+    }))
+    .filter((item: ImageResult) => item.previewUrl);
+}
+
 export async function POST(request: Request) {
   const body = await request.json().catch(() => ({}));
   const word = String(body.word || '').trim();
@@ -103,7 +133,8 @@ export async function POST(request: Request) {
   const settled = await Promise.allSettled([
     searchOpenverse(query),
     searchUnsplash(query),
-    searchPixabay(query)
+    searchPixabay(query),
+    searchGoogle(query)
   ]);
 
   const results = settled.flatMap((outcome) => (outcome.status === 'fulfilled' ? outcome.value : []));

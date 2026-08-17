@@ -9,7 +9,7 @@ Implementation-ready MVP based on the supplied product specification.
 - Global numbering across pages
 - Bulk vocabulary parsing (`word`, comma/tab-separated, numbered lists, `word | meaning`)
 - Progressive per-item image search with a concurrency cap
-- Openverse, Unsplash, and Pixabay provider adapters through a server route
+- Openverse, Unsplash, Pixabay, and Google Custom Search provider adapters through a server route
 - Image picker with source metadata and manual upload
 - Word editing, image replacement, delete/reflow
 - English/Arabic UI direction switch independent of poster direction
@@ -28,16 +28,17 @@ Then open `http://localhost:3000`.
 
 ## Image search providers
 
-Openverse works out of the box with no key. Unsplash and Pixabay are optional — add their keys to unlock more results in the picker:
+Openverse works out of the box with no key. Unsplash, Pixabay, and Google are optional — add their keys to unlock more results in the picker:
 
 1. Copy `.env.example` to `.env.local`.
 2. Get a free Unsplash key at https://unsplash.com/oauth/applications and set `UNSPLASH_ACCESS_KEY`.
 3. Get a free Pixabay key at https://pixabay.com/api/docs/ and set `PIXABAY_API_KEY`.
-4. Restart `npm run dev`.
+4. For Google, you need both `GOOGLE_API_KEY` (from https://console.cloud.google.com/apis/credentials, with the "Custom Search API" enabled) and `GOOGLE_CX` (a search engine ID from https://programmablesearchengine.google.com/, with "Image search" and "Search the entire web" turned on).
+5. Restart `npm run dev`.
 
-Any provider missing a key is skipped silently; results from the remaining providers are still returned.
+Any provider missing its key(s) is skipped silently; results from the remaining providers are still returned.
 
-On Vercel, add the same two variables under Project Settings → Environment Variables.
+On Vercel, add the same variables under Project Settings → Environment Variables.
 
 ## Production integrations still to connect
 
@@ -55,7 +56,7 @@ Recommended next additions:
 ## Architecture
 
 - `src/components/Studio.tsx` — editor shell, project state, poster renderer, picker/export UI
-- `src/app/api/images/search/route.ts` — normalized Openverse/Unsplash/Pixabay search adapter
+- `src/app/api/images/search/route.ts` — normalized Openverse/Unsplash/Pixabay/Google search adapter
 - `src/app/api/images/resolve/route.ts` — auto-selection endpoint
 - `src/lib/types.ts` — typed project/vocabulary/image model
 - `src/lib/parser.ts` — bulk vocabulary parsing + 21-item pagination
